@@ -4,12 +4,17 @@
 while True:
     mpgfind = (input("Enter the minimum MPG\n"))
     try:
-        float(mpgfind)
+        int(mpgfind)
         break
     except ValueError:
         print("You must enter a number for the fuel economy")
-    if 0 > int(mpgfind) > 100:
+
+while True:
+    mpgfind = (input("Enter the minimum MPG\n"))
+    if (0 > int(mpgfind)) or (int(mpgfind) > 100):
         print("Fuel Economy must be between 0 and 100")
+    else:
+        break
 
 while True:
     x = input("\nEnter the name of the input vehicle file\n")
