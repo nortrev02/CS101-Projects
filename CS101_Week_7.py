@@ -30,7 +30,7 @@ while True:
         with open(y):
             break
     except IOError:
-        print("There is an IOError")
+        print("There is an IOError. Enter in a valid File Name")
     except FileNotFoundError:
         print("Enter a valid file name.")
 
