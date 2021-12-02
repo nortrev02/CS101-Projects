@@ -1,3 +1,6 @@
+###Trevor Norton 10/15/2021
+###Program 2
+### tangvv@umsystem.edu
 print("Welcome to the LAB grade calculator!")
 name = input("Who are we calculating grades for?\n")
 labs = int(input("Enter the Labs Grade\n"))

@@ -1,5 +1,6 @@
 ### Trevor Norton CS101L
-
+### Program 6
+### Tangvv@umsystem.edu
 while True:
     mpgfind = (input("Enter the minimum MPG\n"))
     try:
