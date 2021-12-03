@@ -5,12 +5,8 @@ while True:
     mpgfind = (input("Enter the minimum MPG\n"))
     try:
         int(mpgfind)
-        break
     except ValueError:
         print("You must enter a number for the fuel economy")
-
-while True:
-    mpgfind = (input("Enter the minimum MPG\n"))
     if (0 > int(mpgfind)) or (int(mpgfind) > 100):
         print("Fuel Economy must be between 0 and 100")
     else:
@@ -39,6 +35,7 @@ with open(x) as opened:
         for line in opened:
             lst = [i for i in line.split("\t")]
             try:
-                f.write("{:<40}{:>10}".format((lst[0], lst[1], lst[2]), int(lst[7])))
+                if (float(lst[7]) >= float(mpgfind)):
+                    f.write("{}{:>10}".format("{:<40}".format(lst[0], lst[1], lst[2]), int(lst[7])))
             except ValueError:
                 print("Could not convert value for", lst[0], lst[1], lst[2])
