@@ -1,36 +1,33 @@
-while True:
-    userFL = input("Please enter the full name of the file you would like to check.\n")
-    try:
-        with open(userFL) as fl:
-            ls = []
-            for line in fl:
-                ls.extend(i.upper() for i in line.split(" "))
-        d = {}
-        for i in ls:
-            if i not in d:
-                d[i] = ""
-        for i in d:
-            num = 0
-            for j in range(0, len(ls)):
-                if i == ls[j]:
-                    num += 1
-            d[i] = num
-        print("{:<10} {:<10} {:<10}".format("#", "Word", "Frequency"))
-        print("===============================")
-    except(FileNotFoundError):
-        print("File Not Found. Please enter valid file.")
 
+wordict = {}
 while True:
     x = input("Please enter the full name of the file you would like to check.\n")
     try:
         with open(x) as inp:
+            print("{:<10} {:<10} {:<10}".format("#", "Word", "Frequency"))
+            print("===============================")
             for line in inp:
-                str1 = line.replace("\n", "'").replace("'", ",").split(",")
-                str2 = []
-                for i in str1:             
-                    if i not in str2:
-                        str2.append(i) 
-                for i in range(0, len(str2) -1):
-                    print(str2[i], str1.count(str2[i]))
+                raw_string = line.replace("\n", ",").replace("'", ",").replace("\t", ",").split(",")
+                exclusive_string = []
+                for i in raw_string:
+                    if len(i) > 3:
+                        if i not in exclusive_string:
+                            exclusive_string.append(i) 
+                    for i in range(0, len(exclusive_string) -1):
+                        wordict[exclusive_string[i]] = raw_string.count(exclusive_string[i])
+            break
     except FileNotFoundError:
         print("File Not Found. Please enter valid file.")
+
+num = 1
+for i in sorted(wordict.keys()):
+    if num < 10:
+        print("{:<10}{:<10}{:<10}".format(num, i, wordict[i]))
+        num += 1
+
+once = 0
+for i in wordict:
+    if wordict[i] == 1:
+        once += 1
+
+print("There are", once, "unique words that appear only once in this document.")
